@@ -30,6 +30,6 @@ Currently supported mods:
 - [@MistressNebula](https://github.com/435THz) and [@Kadeanon](https://github.com/Kadeanon) for the Terraria 1.4 port
 
 # About this fork
-At the moment i'm working on the appearance of the filters, because in my opinion they look a bit illogical and not quite suitable for Terraria (although my version, probably, too). I use post drawing to draw the category on top of one image of the lab filter. However, this method has a number of disadvantages: the category is not displayed in the Heros mod Item Browser, but in the Cheat panel everything is fine, as well as in the weapon rack and when hovering over the frame with the filter. So far nothing is resolved if you drop an item on the ground, but this is relatively easy to fix. 
+At the moment i'm working on the appearance of the filters, because in my opinion they look a bit illogical and not quite suitable for Terraria (although my version, probably, too). I use post drawing to draw the category on top of one image of the lab filter. However, this method has a number of disadvantages: the category is not displayed in the Heros mod Item Browser, but in the Cheat Sheet everything is fine, as well as in the weapon rack and when hovering over the frame with the filter. So far nothing is resolved if you drop an item on the ground, but this is relatively easy to fix. 
 
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://github.com/VoidDefi/MechTransfer/blob/master/screen1.png)
