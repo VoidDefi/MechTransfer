@@ -183,6 +183,11 @@ Items: {
 		Tooltip: "{$Items.FilterItem.Tooltip}"
 	}
 
+	Rarity-FieryRedFilterItem: {
+		DisplayName: "{$Items.FilterItem.DisplayName} (Rarity'-Rosso fuoco)"
+		Tooltip: "{$Items.FilterItem.Tooltip}"
+	}
+
 	Rarity-AmberFilterItem: {
 		DisplayName: "{$Items.FilterItem.DisplayName} (Rarita'-Ambra)"
 		Tooltip: "{$Items.FilterItem.Tooltip}"
@@ -297,6 +302,21 @@ Items: {
 	LivingHellstoneItem: {
 		DisplayName: Pietra infernale vivente
 		Tooltip: Divora qualsiasi oggetto al contatto, indipendentemente dalla rarita'
+	}
+
+	EquipmentIcon: {
+		// DisplayName: Equipment Icon
+		// Tooltip: ""
+	}
+
+	ToolIcon: {
+		// DisplayName: Tool Icon
+		// Tooltip: ""
+	}
+
+	WeaponIcon: {
+		// DisplayName: Weapon Icon
+		// Tooltip: ""
 	}
 }
 

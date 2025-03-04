@@ -187,6 +187,11 @@ Items: {
 		Tooltip: "{$Items.FilterItem.Tooltip}"
 	}
 
+	Rarity-FieryRedFilterItem: {
+		DisplayName: "{$Items.FilterItem.DisplayName} (Редкость: Огненно-красная)"
+		Tooltip: "{$Items.FilterItem.Tooltip}"
+	}
+
 	Rarity-AmberFilterItem: {
 		DisplayName: " {$Items.FilterItem.DisplayName} (Редкость: Янтарная)"
 		Tooltip: "{$Items.FilterItem.Tooltip}"
@@ -301,6 +306,21 @@ Items: {
 	LivingHellstoneItem: {
 		DisplayName: " Живой адский камень"
 		Tooltip: " Уничтожает любой предмет при контакте, независимо от редкости"
+	}
+
+	EquipmentIcon: {
+		// DisplayName: Equipment Icon
+		// Tooltip: ""
+	}
+
+	ToolIcon: {
+		// DisplayName: Tool Icon
+		// Tooltip: ""
+	}
+
+	WeaponIcon: {
+		// DisplayName: Weapon Icon
+		// Tooltip: ""
 	}
 }
 

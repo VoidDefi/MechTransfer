@@ -198,6 +198,11 @@ Items: {
 		Tooltip: "{$Items.FilterItem.Tooltip}"
 	}
 
+	Rarity-FieryRedFilterItem: {
+		DisplayName: "{$Items.FilterItem.DisplayName} (稀有度-火红)"
+		Tooltip: "{$Items.FilterItem.Tooltip}"
+	}
+
 	Rarity-AmberFilterItem: {
 		DisplayName: " {$Items.FilterItem.DisplayName}(稀有度-琥珀色)"
 		Tooltip: "{$Items.FilterItem.Tooltip}"
@@ -312,6 +317,21 @@ Items: {
 	LivingHellstoneItem: {
 		// DisplayName: Living Hellstone
 		// Tooltip: Devours any item on contact, regardless of rarity
+	}
+
+	EquipmentIcon: {
+		// DisplayName: Equipment Icon
+		// Tooltip: ""
+	}
+
+	ToolIcon: {
+		// DisplayName: Tool Icon
+		// Tooltip: ""
+	}
+
+	WeaponIcon: {
+		// DisplayName: Weapon Icon
+		// Tooltip: ""
 	}
 }
 
