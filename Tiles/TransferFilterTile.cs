@@ -1,4 +1,5 @@
 ﻿using MechTransfer.Items;
+using MechTransfer.Items.Icons;
 using System;
 using System.Collections.Generic;
 using Terraria;
@@ -117,10 +118,14 @@ namespace MechTransfer.Tiles
                 LogFilterTests();
         }
 
-        private ItemFilterItem createFilter(string type, int recipeItem, ItemFilterItem.MatchConditionn condition)
+        private ItemFilterItem createFilter(string type, int recipeItem, ItemFilterItem.MatchConditionn condition, bool recipeIsCategory = true)
         {
             ItemFilterItem i = new ItemFilterItem(type + "FilterItem", condition);
             i.recipeItem = recipeItem;
+
+            if(recipeIsCategory)
+                i.DrawItemCategoryType = recipeItem;
+
             Mod.AddContent(i);
 
             //Nebula: Easter egg handling is now done at runtime by ItemFilterItem.DisplayName itself
@@ -131,52 +136,71 @@ namespace MechTransfer.Tiles
 
         private void LoadFilters()
         {
-            createFilter("Any", -1, x => true);
+            //Main
 
-            createFilter("Rarity-Gray", ItemID.GrayPaint, x => x.rare == -1).Rarity = -1;
-            createFilter("Rarity-White", ItemID.WhitePaint, x => x.rare == 0).Rarity = 0;
-            createFilter("Rarity-Blue", ItemID.BluePaint, x => x.rare == 1).Rarity = 1;
-            createFilter("Rarity-Green", ItemID.GreenPaint, x => x.rare == 2).Rarity = 2;
-            createFilter("Rarity-Orange", ItemID.OrangePaint, x => x.rare == 3).Rarity = 3;
-            createFilter("Rarity-LightRed", ItemID.RedPaint, x => x.rare == 4).Rarity = 4;
-            createFilter("Rarity-Pink", ItemID.PinkPaint, x => x.rare == 5).Rarity = 5;
-            createFilter("Rarity-LightPurple", ItemID.PurplePaint, x => x.rare == 6).Rarity = 6;
-            createFilter("Rarity-Lime", ItemID.LimePaint, x => x.rare == 7).Rarity = 7;
-            createFilter("Rarity-Yellow", ItemID.YellowPaint, x => x.rare == 8).Rarity = 8;
-            createFilter("Rarity-Cyan", ItemID.CyanPaint, x => x.rare == 9).Rarity = 9;
-            createFilter("Rarity-Red", ItemID.RedPaint, x => x.rare == 10).Rarity = 10;
-            createFilter("Rarity-Purple", ItemID.PurplePaint, x => x.rare == 11).Rarity = 11;
-            createFilter("Rarity-Rainbow", ItemID.DemonHeart, x => x.expert == true).expert = true;
-            createFilter("Rarity-Amber", ItemID.Amber, x => x.rare == -11).Rarity = -11;
+            createFilter("Any", -1, x => true).TextureName = "AnyFilter";
 
-            createFilter("Equipable", ItemID.Shackle, x => (x.headSlot >= 0 || x.bodySlot >= 0 || x.legSlot >= 0 || x.accessory || Main.projHook[x.shoot] || x.mountType >= 0 || x.dye > 0 || (x.buffType > 0 && (Main.lightPet[x.buffType] || Main.vanityPet[x.buffType]))));
+            //Rarities
+
+            createFilter("Rarity-Gray", ItemID.GrayPaint, x => x.rare == -1, false).Rarity = -1;
+            createFilter("Rarity-White", ItemID.WhitePaint, x => x.rare == 0, false).Rarity = 0;
+            createFilter("Rarity-Blue", ItemID.BluePaint, x => x.rare == 1, false).Rarity = 1;
+            createFilter("Rarity-Green", ItemID.GreenPaint, x => x.rare == 2, false).Rarity = 2;
+            createFilter("Rarity-Orange", ItemID.OrangePaint, x => x.rare == 3, false).Rarity = 3;
+            createFilter("Rarity-LightRed", ItemID.RedPaint, x => x.rare == 4, false).Rarity = 4;
+            createFilter("Rarity-Pink", ItemID.PinkPaint, x => x.rare == 5, false).Rarity = 5;
+            createFilter("Rarity-LightPurple", ItemID.PurplePaint, x => x.rare == 6, false).Rarity = 6;
+            createFilter("Rarity-Lime", ItemID.LimePaint, x => x.rare == 7, false).Rarity = 7;
+            createFilter("Rarity-Yellow", ItemID.YellowPaint, x => x.rare == 8, false).Rarity = 8;
+            createFilter("Rarity-Cyan", ItemID.CyanPaint, x => x.rare == 9, false).Rarity = 9;
+            createFilter("Rarity-Red", ItemID.RedPaint, x => x.rare == 10, false).Rarity = 10;
+            createFilter("Rarity-Purple", ItemID.PurplePaint, x => x.rare == 11, false).Rarity = 11;
+            createFilter("Rarity-Rainbow", ItemID.DemonHeart, x => x.expert == true, false).expert = true;
+            createFilter("Rarity-FieryRed", 4924, x => x.master == true, false).master = true;
+            createFilter("Rarity-Amber", ItemID.Amber, x => x.rare == -11, false).Rarity = -11;
+
+            //Equipment
+
+            createFilter("Equipable", ItemID.Shackle, x => (x.headSlot >= 0 || x.bodySlot >= 0 || x.legSlot >= 0 || x.accessory || Main.projHook[x.shoot] || x.mountType >= 0 || x.dye > 0 || (x.buffType > 0 && (Main.lightPet[x.buffType] || Main.vanityPet[x.buffType]))), false).DrawItemCategoryType = ModContent.ItemType<EquipmentIcon>();
             createFilter("Armor", ItemID.WoodBreastplate, x => ((x.headSlot >= 0 || x.bodySlot >= 0 || x.legSlot >= 0) && !x.vanity));
             createFilter("Vanity", ItemID.FamiliarWig, x => (x.vanity));
-            createFilter("Accessory", ItemID.Shackle, x => (x.accessory));
+            createFilter("Accessory", ItemID.Shackle, x => (x.accessory)).customCategoryScale = 0.8f;
             Main.checkHalloween();
-            createFilter("Dye", ItemID.SilverDye, x => (x.dye > 0));
+            createFilter("Dye", ItemID.SilverDye, x => (x.dye > 0)).customCategoryScale = 0.7f;
 
-            createFilter("Ammo", ItemID.MusketBall, x => x.ammo != 0);
-            createFilter("Bait", ItemID.ApprenticeBait, x => x.bait > 0);
-            createFilter("Money", ItemID.GoldCoin, x => x.type == ItemID.CopperCoin || x.type == ItemID.SilverCoin || x.type == ItemID.GoldCoin || x.type == ItemID.PlatinumCoin);
-            createFilter("Bag", ItemID.WoodenCrate, x => Bags.Contains(x.type));
+            //One use
 
-            createFilter("Tool", ItemID.CopperPickaxe, x => x.pick > 0 || x.axe > 0 || x.hammer > 0);
-            createFilter("Weapon", ItemID.CopperShortsword, x => x.damage > 0 && x.pick == 0 && x.axe == 0 && x.hammer == 0);
+            createFilter("Ammo", ItemID.MusketBall, x => x.ammo != 0).customCategoryScale = 1f;
+            createFilter("Bait", ItemID.ApprenticeBait, x => x.bait > 0).customCategoryScale = 1f;
+            createFilter("Money", ItemID.GoldCoin, x => x.type == ItemID.CopperCoin || x.type == ItemID.SilverCoin || x.type == ItemID.GoldCoin || x.type == ItemID.PlatinumCoin).customCategoryScale = 1;
+            createFilter("Bag", ItemID.WoodenCrate, x => Bags.Contains(x.type)).customCategoryScale = 0.5f;
+
+            //Many use 
+
+            createFilter("Tool", ItemID.CopperPickaxe, x => x.pick > 0 || x.axe > 0 || x.hammer > 0, false).DrawItemCategoryType = ModContent.ItemType<ToolIcon>();
+            createFilter("Weapon", ItemID.CopperShortsword, x => x.damage > 0 && x.pick == 0 && x.axe == 0 && x.hammer == 0, false).DrawItemCategoryType = ModContent.ItemType<WeaponIcon>();
+
+            //Weapons
 
             createFilter("Melee", ItemID.CopperShortsword, x => x.DamageType == DamageClass.Melee);
-            createFilter("Magic", ItemID.LesserManaPotion, x => x.DamageType == DamageClass.Magic);
+            createFilter("Magic", ItemID.LesserManaPotion, x => x.DamageType == DamageClass.Magic).DrawItemCategoryType = ItemID.AmethystStaff;
             createFilter("Ranged", ItemID.WoodenBow, x => x.DamageType == DamageClass.Ranged);
-            createFilter("Summon", ItemID.SummoningPotion, x => x.DamageType == DamageClass.Summon);
-            createFilter("Thrown", ItemID.Shuriken, x => x.DamageType == DamageClass.Throwing);
+            createFilter("Summon", ItemID.SummoningPotion, x => x.DamageType == DamageClass.Summon, false).DrawItemCategoryType = ItemID.SlimeStaff;
+            createFilter("Thrown", ItemID.Shuriken, x => x.DamageType == DamageClass.Throwing).customCategoryScale = 1;
 
-            createFilter("Consumable", ItemID.PumpkinPie, x => x.consumable);
-            createFilter("Material", ItemID.Wood, x => x.material);
+            //Consumes
 
-            createFilter("Potion", ItemID.LesserHealingPotion, x => x.consumable && (x.healLife > 0 || x.healMana > 0 || x.buffType > 0));
+            var consumable = 
+            createFilter("Consumable", ItemID.PumpkinPie, x => x.consumable, false);
+            consumable.DrawItemCategoryType = ItemID.Glowstick;
+            consumable.customCategoryScale = 0.8f;
+            createFilter("Material", ItemID.Wood, x => x.material).customCategoryScale = 0.7f;
+            createFilter("Potion", ItemID.LesserHealingPotion, x => x.consumable && (x.healLife > 0 || x.healMana > 0 || x.buffType > 0)).customCategoryScale = 0.8f;
 
-            createFilter("Tile", ItemID.DirtBlock, x => x.createTile > -1);
-            createFilter("Wall", ItemID.WoodWall, x => x.createWall > 0);
+            //Places
+
+            createFilter("Tile", ItemID.DirtBlock, x => x.createTile > -1).customCategoryScale = 0.8f;
+            createFilter("Wall", ItemID.WoodWall, x => x.createWall > 0).customCategoryScale = 0.5f;
         }
 
         private void LoadBagFilter()
