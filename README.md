@@ -34,4 +34,6 @@ I'm currently working on the look of the filters, as I think they look a bit ill
 
 (I also added a filter for Fiery Red rarity, I also translated it into all 4 languages, but I don't speak Chinese and Italian, so I used a translator (I don't know if it's right). And these textures on top of the filter are items, for the categories "Equipment", "Tools" and "Weapons" I created separate items so as not to build unnecessary systems, they cannot be obtained honestly and they are worthless)
 
+After the filters I moved on to editing textures, I think that in general, the textures are good, and for most I will just edit the outline, since for textures in Terraria it must be colored (just a pixel darker than the neighboring one in the image itself) But there are a number of textures that, in my opinion, would be better completely redone.
+
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://github.com/VoidDefi/MechTransfer/blob/master/screen1.png)
